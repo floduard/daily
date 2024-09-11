@@ -3,7 +3,7 @@ from django.db import models
 
 CATEGORY_CHOICES = (
     ('G', 'Ghee'),
-    ('CL', 'ChickenLeg'),
+    ('CB', 'ChickenBatter'),
     ('CW', 'ChickenWings'),
     ('C', 'Chicken'),
     ('M', 'MilkShake'),
