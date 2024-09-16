@@ -31,7 +31,6 @@ class CustomerProfileForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Name'}),
             'locality': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Locality'}),
-            'city' : forms.TextInput(attrs={'class':'form-control', 'placeholder':'City'}),
            'mobile': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Mobile'}),
            'state': forms.Select(attrs={'class':'form-control', 'placeholder':'State'}),
             'zipcode': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Zipcode'}),
