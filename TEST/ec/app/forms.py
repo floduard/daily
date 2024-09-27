@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from .models import Customer
+from django.urls import reverse_lazy
 
 
 class LoginForm(AuthenticationForm):
@@ -21,7 +22,13 @@ class CustomerRegistrationForm(UserCreationForm):
 
 
 class PasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'autocomplete' : 'current-password', 'class':'form-control', 'placeholder':'Old Password'}))
+    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'New Password'}))
+    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
+
+class PasswordResetForm(PasswordChangeForm):
     pass
+
 
 
 class CustomerProfileForm(forms.ModelForm):
@@ -36,3 +43,9 @@ class CustomerProfileForm(forms.ModelForm):
             'zipcode': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Zipcode'}),
         }
 
+
+
+class MessageForm(forms.Form):
+    name = forms.CharField(max_length=100, required=True, label='Your Name')
+    email = forms.EmailField(required=True, label='Your Email')
+    message = forms.CharField(widget=forms.Textarea, required=True, label='Message')
